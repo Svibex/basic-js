@@ -2,16 +2,16 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function createDreamTeam(members) {
-  if (!(members instanceof Array)) {
+  if (typeof members !== Array) {
     return false
   }
   members = members.sort()
-  let dreamTeamName=[]
+  let arr = []
   for (let name of members) {
     if (typeof name === 'string') {
       name = name.trim()
-      dreamTeamName.push(name[0].toUpperCase())
+      arr.push(name[0].toUpperCase())
     }
   }
-  return dreamTeamName.sort().join('')
+  return arr.sort().join('')
 };
