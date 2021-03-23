@@ -4,6 +4,7 @@ module.exports = function createDreamTeam(members) {
   if (typeof members !== Array)) {
     return false
   }
+  members = members.sort()
   let arr=[]
   for (let name of members) {
     if (typeof name === 'string') {
