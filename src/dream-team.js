@@ -1,17 +1,14 @@
-
-const CustomError = require("../extensions/custom-error");
-
-module.exports = function createDreamTeam(members) {
-  if (!(members instanceof Array)) {
-    return false
-  }
-  members = members.sort()
-  let arr=[]
-  for (let team of members) {
-    if (typeof team === 'string') {
-      team = team.trim()
-      arr.push(team[0].toUpperCase())
+module.exports = function repeater(str, { repeatTimes, separator = '+', addition, additionRepeatTimes, additionSeparator = '|' }) {
+    if (typeof str !== 'string') str = String(str);
+    if (typeof addition !== 'undefined' && typeof addition !== 'string') addition = String(addition);
+    if (addition && additionRepeatTimes) {
+        addition = addition.concat(additionSeparator).repeat(additionRepeatTimes)
+        addition = addition.slice(0, addition.length - additionSeparator.length);
     }
-  }
-  return arr.sort().join('')
+    if (addition) str = str + addition;
+    if (repeatTimes) {
+        str = str.concat(separator).repeat(repeatTimes)
+        str = str.slice(0, str.length - separator.length);
+    }
+    return str;
 };
