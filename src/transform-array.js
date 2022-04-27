@@ -15,7 +15,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function transform(arr) {
   throw new NotImplementedError('Not implemented');
-  if (!Array.isArray(arr)) throw Error;
+  if (!Array.isArray(arr)) throw Error('\'arr\' parameter must be an instance of the Array!');
   if (!arr.length) return [];
   const obj = arr.reduce((acc, el, i) => {
     if (el === '--double-next') {
